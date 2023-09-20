@@ -58,7 +58,7 @@ function Navbar() {
                       <MdShoppingCart className="text-xl text-textColor" />
                       <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center absolute -top-2 -right-1.5">
                         <p className="text-white text-xs font-semibold">
-                          {cart?.length}
+                          {cart ? cart?.length : "0"}
                         </p>
                       </div>
                     </motion.div>
