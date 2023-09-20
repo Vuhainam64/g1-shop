@@ -1,16 +1,8 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { auth, db } from "./config/firebase.config";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { SET_USER } from "./stores/actions/userActions";
 import { Auth, Order, PageNotFound, Shop } from "./pages";
 import { Cart, Spinner } from "./components";
@@ -27,7 +19,6 @@ function App() {
   const dispatch = useDispatch();
   const userId = auth.currentUser?.uid;
   const isCart = useSelector((state) => state.isCart);
-  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(

@@ -18,7 +18,7 @@ export const addNewProduct = async (data) => {
 export const getAllProducts = async () => {
   try {
     const res = await axios.get(`${baseURL}/Products`);
-    console.log(res.data);
+    console.log("Product items: ", res.data);
     return res.data;
   } catch (err) {
     return null;

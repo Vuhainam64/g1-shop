@@ -39,7 +39,7 @@ function Detail() {
           quantity: 1,
         };
 
-        // Dispatch the action to update the cart in Redux store
+        await setDoc(docRef, data);
         dispatch(setCartItems([...cart, data]));
       }
     } catch (err) {
