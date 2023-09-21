@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Footer, Navbar } from "../layouts";
 import { useEffect } from "react";
 import { setOrders } from "../stores/actions/ordersAction";
-import { OrderData } from "../components";
-import { getAllOrder, getUserOrders } from "../untils/helpers";
+import { getUserOrders } from "../untils/helpers";
 import { auth } from "../config/firebase.config";
+import OrderData from "../components/Admin/OrderData";
 
 function Order() {
   const orders = useSelector((state) => state.orders);

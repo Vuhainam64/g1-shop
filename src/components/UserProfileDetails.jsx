@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Avatar } from "../assets/img";
 import { Menus, signOutAction } from "../untils/helpers";
+import { auth } from "../config/firebase.config";
 
 function UserProfileDetails() {
   const user = useSelector((state) => state.user?.user);
   const [isMenu, setIsMenu] = useState(false);
+  const userId = auth.currentUser.uid;
 
   return (
     <div className="flex items-center justify-center w-full rounded-md px-4 py-2 text-sm text-gray-700  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500">
@@ -30,6 +32,14 @@ function UserProfileDetails() {
       <AnimatePresence>
         {isMenu && (
           <motion.div className=" absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px] bg-white">
+            {userId === process.env.REACT_APP_ADMIN_ID && (
+              <Link
+                className="text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 items-center w-full px-2 py-1 rounded-md"
+                to={"/dashboard/home"}
+              >
+                Dashboard
+              </Link>
+            )}
             {Menus &&
               Menus.map((menu) => (
                 <Link

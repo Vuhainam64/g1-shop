@@ -21,7 +21,6 @@ function Cart() {
   const cart = useSelector((state) => state.cart);
   const user = auth.currentUser;
   const navigate = useNavigate();
-  const isCart = useSelector((state) => state.isCart);
 
   const [total, setTotal] = useState(0);
 

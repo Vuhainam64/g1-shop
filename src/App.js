@@ -4,7 +4,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { auth, db } from "./config/firebase.config";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { SET_USER } from "./stores/actions/userActions";
-import { Auth, Order, PageNotFound, Shop } from "./pages";
+import { Auth, Dashboard, Order, PageNotFound, Shop } from "./pages";
 import { Cart, Spinner } from "./components";
 import Home from "./pages/Home";
 import { VerifyPopup } from "./components/Auth";
@@ -117,6 +117,7 @@ function App() {
 
             {isLogin && isEmailVerified && (
               <>
+                <Route path="/dashboard/*" element={<Dashboard />} />
                 <Route path="/order" element={<Order />} />
               </>
             )}

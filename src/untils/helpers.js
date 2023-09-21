@@ -1,7 +1,20 @@
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-import { auth, db } from "../config/firebase.config";
-import { v4 as uuidv4 } from "uuid";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  signInWithRedirect
+} from "firebase/auth";
+import {
+  auth,
+  db
+} from "../config/firebase.config";
+import {
+  v4 as uuidv4
+} from "uuid";
+import {
+  collection,
+  getDocs,
+  query,
+  where
+} from "firebase/firestore";
 
 const googleProider = new GoogleAuthProvider();
 
@@ -11,9 +24,16 @@ export const signInWithGoogle = async () => {
   });
 };
 
-export const Menus = [
-  { id: uuidv4(), name: "My Orders", uri: "/order" },
-  { id: uuidv4(), name: "Settings", uri: "/setting" },
+export const Menus = [{
+    id: uuidv4(),
+    name: "My Orders",
+    uri: "/order"
+  },
+  {
+    id: uuidv4(),
+    name: "Settings",
+    uri: "/setting"
+  },
 ];
 
 export const signOutAction = async () => {
@@ -34,7 +54,7 @@ export const getAllOrder = async () => {
       const orderData = doc.data();
       orders.push(orderData);
     });
-
+    console.log("order:", orders);
     return orders;
   } catch (error) {
     console.error("Error fetching orders:", error);
@@ -61,3 +81,9 @@ export const getUserOrders = async (userId) => {
     throw error;
   }
 };
+
+export const isActiveStyles =
+  " text-2xl text-orange-700 font-semibold hover:text-orange-700 px-4 py-2 duration-100 transition-all ease-in-out";
+
+export const isNotActiveStyles =
+  " text-xl text-textColor hover:text-orange-700 duration-100 px-4 py-2 transition-all ease-in-out";
